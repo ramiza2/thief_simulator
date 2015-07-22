@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Thief Simulator</title>
+	<link rel="stylesheet" type="text/css" href="thief.css">
+	<link rel="shortcut icon" href="favicon.ico">
+	
+</head>
+<body>
+	
+<header>
+	
+	<h1>Thief Simulator</h1>
+	<h3>Play as a thief!</h3>
+	</header>
+	
+	<h1 class="default_balance">Current bank balance :</h1>
+	<h2 id="bank_balance" class="default_balance"></h2>
+	
+	<section id="main_button_holder">
+		<button onclick=steal(10)>Steal $10</button>
+		<button onclick=steal(100)>Steal $100</button>
+		<button onclick=steal(1000)>Steal $1000</button>
+		<button onclick=stealExact()>Steal Exact</button>
+		<button onclick=safeBreak()>Break the safe!</button>
+		<button onclick=bankDonate() style="margin-left:10px;">Donate Money</button>
+	</section>
+	
+	<div id="thief_balance_holder">
+	<h1 class="default_balance">Your current balance is : </h1>
+	<h2 id="thief_balance" class="default_balance"></h2>
+	</div>
+	
+	
+	
+	<h1>Your Containers :</h1>
+	
+	<h1 class="container_title">Container 1 - </h1>
+	<h2 id="container1_owned" class="container_title">You do not own this container!</h2>
+	<h2 class="container_money" id="container1_money"></h2> 
+	<div class="container_buttons">
+	<button onclick=buyContainer(container1) id="container1_buy">Buy Container<br>$5k</button>
+	<button onclick=sellContainer(container1) id="container1_sell">Sell Container - $1.5k</button>
+	<button onclick=upgradeContainer(container1) id="container1_upgrade">Upgrade Container</button>
+	<button onclick=containerStore(10,container1) id="container1_store10">Store $10</button>
+	<button onclick=containerStore(100,container1) id="container1_store100">Store $100</button>
+	<button onclick=containerStore(1000,container1) id="container1_store1000">Store $1000</button>
+	<button onclick=containerExactStore(container1) id="container1_storeExact">Store Exact</button>
+	<button onclick=containerTake(container1) id="container1_take">Take Money</button>
+    </div>
+	<h1 class="container_title">Container 2 - </h1>
+	<h2 id="container2_owned" class="container_title">You do not own this container!</h2>
+	<h2 class="container_money" id="container2_money"></h2>
+	<div class="container_buttons">
+	<button onclick=buyContainer(container2) id="container2_buy">Buy Container<br>$7k</button>
+	<button onclick=sellContainer(container2) id="container2_sell">Sell Container - $2.5k</button>
+	<button onclick=upgradeContainer(container2) id="container2_upgrade">Upgrade Container</button>
+	<button onclick=containerStore(10,container2) id="container2_store10">Store $10</button>
+	<button onclick=containerStore(100,container2) id="container2_store100">Store $100</button>
+	<button onclick=containerStore(1000,container2) id="container2_store1000">Store $1000</button>
+	<button onclick=containerExactStore(container2) id="container2_storeExact">Store Exact</button>
+	<button onclick=containerTake(container2) id="container2_take">Take Money</button>
+	</div>
+	<h1 class="container_title">Container 3 - </h1>
+	<h2 id="container3_owned" class="container_title">You do not own this container!</h2>
+	<h2 class="container_money" id="container3_money"></h2>
+	<div class="container_buttons">
+	<button onclick=buyContainer(container3) id="container3_buy">Buy Container<br>$10k</button>
+	<button onclick=sellContainer(container3) id="container3_sell">Sell Container - $3.5k</button>
+	<button onclick=upgradeContainer(container3) id="container3_upgrade">Upgrade Container</button>
+	<button onclick=containerStore(10,container3) id="container3_store10">Store $10</button>
+	<button onclick=containerStore(100,container3) id="container3_store100">Store $100</button>
+	<button onclick=containerStore(1000,container3) id="container3_store1000">Store $1000</button>
+	<button onclick=containerExactStore(container3) id="container3_storeExact">Store Exact</button>
+	<button onclick=containerTake(container3) id="container3_take">Take Money</button>
+	</div>
+	
+	<div id="upgradeInfo">
+	<h2>Upgrade Information</h2>
+	<h3>Upgrade 1</h3>
+	<p>Cost : $3.5k<br>Capacity Upgrade : 5000</p>
+	<h3>Upgrade 2</h3>
+	<p>Cost : $5k<br>Capacity Upgrade : 7000</p>
+	<p style="color:red; font-weight:bold; font-size:105%">You cannot sell upgrades!</p>
+	</div>
+	
+	<div id="safeTimer">
+	<h2>Safe Timer</h2>
+	<p id="safeTimerDisplay">00:30</p>
+	</style>
+	
+	<script src="thief.js"></script>
+	
+</body>
+</html>
