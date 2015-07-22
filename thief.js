@@ -1,6 +1,5 @@
-//TODO : Finish the safe timer!
-
-var bankBalance = randNumberBetween(10000,30000); 
+//TODO: Rewrite the updateContainerDisplay() function completely!
+var bankBalance = 50000
 var thief = {money : 0, maxMoney : 10000};
 var safe = {isBroken: false, amount: 0, moneyMin: 3000, moneyMax: 5000, refillTimer: 30000};
 
