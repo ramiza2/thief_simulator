@@ -1,8 +1,8 @@
-//TODO : Add the safe timer
+//TODO : Finish the safe timer!
 
-var bankBalance = randNumberBetween(10000,30000); //Balance u banci
+var bankBalance = randNumberBetween(10000,30000); 
 var thief = {money : 0, maxMoney : 10000};
-var safe = {isBroken: false, amount:0, moneyMin: 3000, moneyMax: 5000};
+var safe = {isBroken: false, amount: 0, moneyMin: 3000, moneyMax: 5000, refillTimer: 30000};
 
 var container1 = {isOwned: false, maxMoney : 7000, currentMoney: 0, buyPrice : 5000, sellPrice: 1500, currentUpgrade : 0};
 var container2 = {isOwned: false, maxMoney : 12000, currentMoney: 0, buyPrice : 7000, sellPrice: 2500, currentUpgrade : 0};
@@ -79,15 +79,11 @@ function thiefBalanceDisplay(balance){
 	document.getElementById("thief_balance").innerHTML = "$" + balance;
 	
 }
-function safeBreakTimer(){
-	safe.isBroken = false;
-	safe.amount = randNumberBetween(safe.moneyMin,safe.moneyMax);
-}
 function safeBreak(){
 	safe.amount = randNumberBetween(safe.moneyMin,safe.moneyMax);
 	
 	if(safe.isBroken == true){
-		alert("You already broke the safe! It's empty! Refilling in 5 seconds!");
+		alert("You already broke the safe! It's empty! Refilling in " + safe.refillTimer/1000 + " seconds!");
 	}
 	else{
 		if(thief.money + safe.amount > thief.maxMoney){
@@ -95,12 +91,33 @@ function safeBreak(){
 		}
 		else{
 			thief.money += safe.amount;
-			safe.amount = 0;
 			safe.isBroken = true;
 			thiefBalanceDisplay(thief.money);
+            setTimeout(function(){safe.isBroken=false}, safe.refillTimer);
+            safeTimerDisplay(safe.refillTimer);
 		}	
 	}
-	setTimeout(function(){safeBreakTimer();}, 5000);
+	
+}
+function safeTimerDisplay(time){
+    var sec = time / 1000;
+    var timer = setInterval(function(){
+        if(sec >= 10){
+        document.getElementById("safeTimerDisplay").innerHTML = "00:" + sec;
+            sec--;
+            }
+        else if(sec < 10){
+            document.getElementById("safeTimerDisplay").innerHTML = "00:0" + sec;
+            sec--;
+        }
+        if(sec <= 0){
+            document.getElementById("safeTimerDisplay").innerHTML = "Safe Full!";
+            clearInterval(timer); 
+        }
+        
+        var sound = document.getElementById("beepSound").play();
+        
+    }, 1000); 
 }
 function randNumberBetween(minNumber, maxNumber){
 	
